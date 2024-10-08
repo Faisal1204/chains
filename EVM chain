@@ -1,0 +1,47 @@
+{
+  "name": "Ethereum Mainnet",
+  "chain": "ETH",
+  "rpc": [
+    "https://mainnet.infura.io/v3/${INFURA_API_KEY}",
+    "https://api.mycryptoapi.com/eth"
+  ],
+  "faucets": [],
+  "nativeCurrency": {
+    "name": "Ether",
+    "symbol": "ETH",
+    "decimals": 18
+  },
+  "features": [{ "name": "EIP155" }, { "name": "EIP1559" }],
+  "infoURL": "https://ethereum.org",
+  "shortName": "eth",
+  "chainId": 1,
+  "networkId": 1,
+  "icon": "ethereum",
+  "explorers": [{
+    "name": "etherscan",
+    "url": "https://etherscan.io",
+    "icon": "etherscan",
+    "standard": "EIP3091"
+  }]
+}
+
+
+
+[
+    {
+      "url": "ipfs://QmdwQDr6vmBtXmK2TmknkEuZNoaDqTasFdZdu3DRw8b2wt",
+      "width": 1000,
+      "height": 1628,
+      "format": "png"
+    }
+]
+
+{
+  ...
+  "parent": {
+   "type" : "L2",
+   "chain": "eip155-1",
+   "bridges": [ {"url":"https://bridge.arbitrum.io"} ]
+  }
+}
+
