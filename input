@@ -1,0 +1,39 @@
+{
+  "dlp_id": 19, // DLP ID is found in the Root Network contract after the DLP is registered
+  "valid": false, // A single boolean to summarize if the file is considered valid in this DLP
+  "score": 0.7614457831325301, // A score between 0 and 1 for the file, used to determine how valuable the file is. This can be an aggregation of the individual scores below.
+  "authenticity": 1.0, // A score between 0 and 1 to rate if the file has been tampered with
+  "ownership": 1.0, // A score between 0 and 1 to verify the ownership of the file
+  "quality": 0.6024096385542169, // A score between 0 and 1 to show the quality of the file
+  "uniqueness": 0, // A score between 0 and 1 to show unique the file is, compared to others in the DLP
+  "attributes": {
+    // Custom attributes that can be added to the proof to provide extra context about the encrypted file
+    "total_score": 0.5,
+    "score_threshold": 0.83,
+    "email_verified": true
+  }
+}
+docker build -t volara-proof .
+docker run \
+--rm \
+--volume $(pwd)/demo/sealed:/sealed \
+--volume $(pwd)/demo/input:/input \
+--volume $(pwd)/demo/output:/output \
+--env USER_EMAIL=user123@gmail.com \
+volara-proof
+
+{gramine-sgx-gen-private-key enclave-key.pem
+curl -L https://address/of/gsc-volara-proof.tar.gz | docker load
+docker run \
+--rm \
+--volume /gsc-volara-proof/input:/input \
+--volume /gsc-volara-proof/output:/output \
+--device /dev/sgx_enclave:/dev/sgx_enclave \
+--volume /var/run/aesmd:/var/run/aesmd \
+--volume /mnt/gsc-volara-proof/sealed:/sealed \
+--env USER_EMAIL=user123@gmail.com \
+gsc-volara-proof
+/input
+}
+  /sealed}
+{
